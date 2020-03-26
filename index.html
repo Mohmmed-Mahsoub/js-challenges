@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    // Section 2: challenge 1
+    
+    var MarkHeight = 1.70,
+        MarksMass = 50,
+        JonHeight = 1.85,
+        JonMass = 100;
+
+    MarkBMI = MarksMass / (MarkHeight * MarkHeight);
+    JonBMI = JonMass / (JonHeight * JonHeight);
+    compareBMI = MarkBMI > JonBMI;
+
+    console.log("Is Mark'S BMI heighr than jon's:" + ' ' + compareBMI);
+
+    // Section 2: challenge 2
+
+    var avrJohnTeam = (89 + 120 + 103) / 3,
+        avrMikeTeam = (116 + 94 + 123) / 3,
+        avrMaryTeam = (97 + 134 + 105) / 3;
+    
+    console.log(avrJohnTeam, avrMikeTeam, avrMaryTeam);
+
+    if(avrJohnTeam > avrMikeTeam) {
+        console.log('John\'s Team is winner');
+    } else if(avrJohnTeam === avrMikeTeam) {
+        console.log('the teams are equal and no winner');
+    } else {
+        console.log('Mike\'s Team is winner');
+    }
+/*
+    switch(true) {
+        case avrJohnTeam > avrMikeTeam:
+            console.log('John\'s Team is winner');
+            break;
+        case avrJohnTeam === avrMikeTeam:
+            console.log('the teams are equal and no winner');
+            break;
+        case avrJohnTeam < avrMikeTeam:
+            console.log('Mike\'s Team is winner');
+            break;  
+    }
+*/
+
+    if(avrJohnTeam > avrMikeTeam && avrJohnTeam > avrMaryTeam) {
+        console.log('John\'s Team is winner');
+    } else if(avrMaryTeam > avrMikeTeam && avrMaryTeam > avrJohnTeam) {
+        console.log('Mary\'s Team is winner');
+    } else if(avrMikeTeam > avrMaryTeam  && avrMikeTeam > avrJohnTeam) {
+        console.log('Mike\'s Team is winner');
+    } else {
+        console.log('there is no winner');
+    }
+/*
+    switch(true) {
+        case avrJohnTeam > avrMikeTeam && avrJohnTeam > avrMaryTeam:
+            console.log('John\'s Team is winner');
+            break;
+        case avrMaryTeam > avrMikeTeam && avrMaryTeam > avrJohnTeam:
+            console.log('Mary\'s Team is winner');
+            break;
+        case avrMikeTeam > avrMaryTeam  && avrMikeTeam > avrJohnTeam:
+            console.log('Mike\'s Team is winner');
+            break;
+        default:
+            console.log('there is no winner')
+    }
+*/
+
+// Section 2: challenge 3
+
+function tips (bill) {
+    if (bill < 50) {
+        return 20/100 * bill
+    } else if(bill > 50 && bill < 200) {
+        return 15/100 * bill
+    } else {
+        return 10/100 * bill
+    }
+}
+
+var tip1 = tips(124);
+var tip2 = tips(48);
+var tip3 = tips(268);
+
+var allTips = [tip1, tip2, tip3];
+var paidAmount = [124 + allTips[0], 48 + allTips[1], 268 + allTips[2]]
+console.log(tip1, tip2, tip3)
+console.log(paidAmount)
+
+// Section 2: challenge 4
+
+var John = {
+    name: 'John',
+    height: 1.85, //meter
+    mass: 100, //kg
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height * this.height)
+    }
+}
+John.calcBMI();
+
+var Mark = {
+    name: 'Mark',
+    height: 1.70, //meter
+    mass: 50, //kg
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height * this.height)
+    }
+}
+Mark.calcBMI();
+
+if(John.BMI > Mark.BMI) {
+    console.log(John.name +' has the heighest BMI '+ John.BMI)
+} else if (John.BMI < Mark.BMI) {
+    console.log(Mark.name +' has the heighest BMI '+ Mark.BMI)
+} else {
+    console.log('they are equal')
+}
+
+console.log(John.BMI, Mark.BMI)
+
+
+// Section 2: challenge 5
+
+var johnTrip = {
+    bills : [124, 48, 268, 180, 42],
+    calcTip : function() { 
+        for (var i=0; i < this.bills.length; i++) {
+            if(this.bills[i] < 50) {
+                this.tips.push(this.bills[i] * 0.2)
+            } else if (this.bills[i] >= 50 && this.bills[i] < 200 ) {
+                this.tips.push(this.bills[i] * 0.15)
+            } else {
+                this.tips.push(this.bills[i] * 0.10)
+            }
+        }
+    },
+    tips : [],
+    calcPaid : function() {
+        for(var i=0; i < this.bills.length; i++) {
+            this.paid.push(this.bills[i] + this.tips[i])
+        }
+    },
+    paid : []
+}
+
+var markTrip = {
+    bills : [77, 375, 110, 45],
+    calcTip : function() { 
+        for (var i=0; i < this.bills.length; i++) {
+            if(this.bills[i] < 100) {
+                this.tips.push(this.bills[i] * 0.2)
+            } else if (this.bills[i] >= 100 && this.bills[i] < 300 ) {
+                this.tips.push(this.bills[i] * 0.10)
+            } else {
+                this.tips.push(this.bills[i] * 0.25)
+            }
+        }
+    },
+    tips : [],
+    calcPaid : function() {
+        for(var i=0; i < this.bills.length; i++) {
+            this.paid.push(this.bills[i] + this.tips[i])
+        }
+    },
+    paid : []
+}
+
+
+johnTrip.calcTip();
+johnTrip.calcPaid();
+markTrip.calcTip();
+markTrip.calcPaid();
+
+
+console.log(johnTrip.tips, johnTrip.paid);
+console.log(markTrip.tips, markTrip.paid);
+
+
+function calcJohnAvarage () {
+    var sum = 0;
+    for(var i=0; i < johnTrip.tips.length; i++ ) {
+        sum = sum + johnTrip.tips[i];
+    }
+    return sum / johnTrip.tips.length;
+}
+
+function calcMarkAvarage () {
+    var sum = 0;
+    for(var i=0; i < markTrip.tips.length; i++ ) {
+        sum = sum + markTrip.tips[i];
+    }
+    return sum / markTrip.tips.length;
+}
+
+var johnAvarage = calcJohnAvarage();
+var markAvarage = calcMarkAvarage();
+
+console.log(johnAvarage, markAvarage);
+
+if(johnAvarage > markAvarage) {
+    console.log('John has the heighest avarege: ' + johnAvarage)
+} else if(johnAvarage < markAvarage) {
+    console.log('Mark has the heighest avarege: ' + markAvarage)
+} else {
+    console.log('they are equal')
+}
+    
+</script>
+</html>
